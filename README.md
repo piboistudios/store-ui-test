@@ -9,6 +9,6 @@ Without further changes the structure is following:
  * `README.md`: This file
 
  ## Demo
- !(https://github.com/piboistudios/store-ui-test/blob/master/dist/demo1.png?raw=true)[demo 1]
- !(https://github.com/piboistudios/store-ui-test/blob/master/dist/demo2.png?raw=true)[demo 2]
- !(https://github.com/piboistudios/store-ui-test/blob/master/dist/demo3.png?raw=true)[demo 3]
+ ![demo 1](https://github.com/piboistudios/store-ui-test/blob/master/dist/demo1.png?raw=true)
+ ![demo 2](https://github.com/piboistudios/store-ui-test/blob/master/dist/demo2.png?raw=true)
+ ![demo 3](https://github.com/piboistudios/store-ui-test/blob/master/dist/demo3.png?raw=true)
