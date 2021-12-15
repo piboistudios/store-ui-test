@@ -7,7 +7,7 @@ const app = (() => {
     const params = Object.fromEntries(urlSearchParams.entries());
 
     const renderProducts = (products) => {
-        axios.get(`/products/list?page=${params.page}`)
+        axios.get(`/views/products/list?page=${params.page}`)
             .then(res => {
                 if (res.headers["content-type"] === "text/html") {
 

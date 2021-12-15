@@ -54,7 +54,14 @@ class ProductsRouterBase {
 		test.friends = ['Chris', 'Shawn', 'Dalvin', 'Alejandro'];
 		return test.renderTest();
 	}
+    @:sub('/views')
+	public function crappy_server_pages_sub()
+		return new CrappyServerPagesRouter(db);
 
+	@:sub('/api')
+	public function beautiful_rest_api()
+		return new BeautifulRestApi(db);
+    
 	@:get('/$content')
 	public function get_content(content:String) {
 		var path = './dist/${content.urlEncode()}';
@@ -65,13 +72,7 @@ class ProductsRouterBase {
 		return tink.web.routing.Response.ofRealSource(fileStream, mimeType);
 	}
 
-	@:sub('/views')
-	public function crappy_server_pages_sub()
-		return new CrappyServerPagesRouter(db);
-
-	@:sub('/api')
-	public function beautiful_rest_api()
-		return new BeautifulRestApi(db);
+	
 }
 
 class BeautifulRestApi extends ProductsRouterBase {

@@ -19,33 +19,34 @@
             <nav aria-label="product nav">
                 <ul class="pagination">
                     {g:if(this.page != 1):g}
-                    <li class="page-item"><a href="/products?page={g:this.page-1:g}" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a></li>
+                    <li class="page-item">
+                        <a href="/views/products?page={g:this.page-1:g}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
                     {g:else:g}
-                    <li class="page-item"><a href="#" aria-label="Previous" class="disabled">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a></li>
-                    {g:end:g} 
-                    {g:for i in this.pageStart...this.pageEnd:g} 
-                        {g:if (i == this.page):g}
-                            <li class="page-item active"><a class="page-link" href="#">{g:i:g}</a></li>
-                        {g:else:g}
-                            <li class="page-item"><a class="page-link" href="/products?page={g:i:g}">{g:i:g}</a></li>
-                        {g:end:g}
-                    {g:end:g} 
-                    
-
-                    
-                    {g:if(this.page != this.numPages):g}
-                    <li class="page-item"><a href="/products?page={g:this.page+1:g}" aria-label="Previous">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a></li>
+                    <li class="page-item">
+                        <a href="#" aria-label="Previous" class="disabled">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    {g:end:g} {g:for i in this.pageStart...this.pageEnd:g} {g:if (i == this.page):g}
+                    <li class="page-item active"><a class="page-link" href="#">{g:i:g}</a></li>
                     {g:else:g}
-                    <li class="page-item"><a href="#" aria-label="Previous" class="disabled">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a></li>
-                    {g:end:g} 
+                    <li class="page-item"><a class="page-link" href="/views/products?page={g:i:g}">{g:i:g}</a></li>
+                    {g:end:g} {g:end:g} {g:if(this.page != this.numPages):g}
+                    <li class="page-item">
+                        <a href="/views/products?page={g:this.page+1:g}" aria-label="Previous">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    {g:else:g}
+                    <li class="page-item">
+                        <a href="#" aria-label="Previous" class="disabled">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    {g:end:g}
                 </ul>
             </nav>
         </div>
