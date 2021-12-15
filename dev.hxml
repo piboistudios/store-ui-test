@@ -1,0 +1,7 @@
+-lib hxnodejs
+-lib crypto
+-lib asys
+-lib mime
+-cp src
+-D analyzer-optimize
+

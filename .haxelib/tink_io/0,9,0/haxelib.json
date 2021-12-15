@@ -1,0 +1,15 @@
+{
+  "name": "tink_io",
+  "license": "MIT",
+  "tags": [],
+  "classPath": "src",
+  "contributors": [
+    "back2dos"
+  ],
+  "releasenote": "tink_core v2 compatibilities",
+  "version": "0.9.0",
+  "dependencies": {
+    "tink_chunk": "",
+    "tink_streams": ""
+  }
+}

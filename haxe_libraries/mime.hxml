@@ -1,0 +1,4 @@
+# @install: lix --silent download "gh://github.com/benmerckx/mime#6402ed02be828ad77eb6e4d12970554bad6b61c8" into mime/0.1.2/github/6402ed02be828ad77eb6e4d12970554bad6b61c8
+-cp ${HAXE_LIBCACHE}/mime/0.1.2/github/6402ed02be828ad77eb6e4d12970554bad6b61c8/src
+-D mime=0.1.2
+--macro mime.Mime.init()

@@ -1,0 +1,24 @@
+{
+  "name": "tink_http",
+  "license": "MIT",
+  "tags": [
+    "tink",
+    "cross",
+    "http"
+  ],
+  "classPath": "src",
+  "description": "Universal HTTP abstraction",
+  "contributors": [
+    "back2dos",
+    "kevinresol"
+  ],
+  "releasenote": "Deprecated secure clients. Reworked aws lambda container",
+  "version": "0.10.0",
+  "url": "http://haxetink.org/tink_http",
+  "dependencies": {
+    "tink_url": "",
+    "http-status": "",
+    "tink_io": "",
+    "tink_anon": ""
+  }
+}

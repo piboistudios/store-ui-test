@@ -1,0 +1,28 @@
+html {
+    font-family: 'Archivo', sans-serif;
+    font-size: 100%;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  #app .app-header {
+    height: 3rem;
+    padding: 0.5rem 0;
+  }
+  
+  #app .app-header img {
+    display: block;
+    margin: 0 auto;
+    max-height: 3rem;
+  }
+  
+  #app .app-body {
+    border-top: 0.1rem solid #E0E0E0;
+    display: block;
+    margin: 0.5rem auto;
+    padding: 0.5rem 0;
+    width: 75vw;
+  }

@@ -1,0 +1,9 @@
+dev.hxml
+
+-lib tink_template
+--macro tink.Template.addFlavor('gabrihtml', '{g:', ':g}')
+
+-lib tink_web
+-lib tink_json
+-main Server
+--js bin/node/server.js

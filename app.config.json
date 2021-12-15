@@ -1,0 +1,5 @@
+{
+    "connectionStrings": [
+        ["product", "uid=gabe4haxelang;pwd=foo;server=db/coyote.json"]
+    ]
+}

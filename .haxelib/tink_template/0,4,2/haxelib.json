@@ -1,0 +1,22 @@
+{
+	"name": "tink_template",
+	"description": "Tinkerbell template Language",
+	"classPath": "src",
+	"dependencies": {
+		"tink_htmlstring": "",
+		"tink_syntaxhub": ""
+	},
+	"url": "http://haxetink.org/tink_template",
+	"contributors": [
+		"back2dos"
+	],
+	"version": "0.4.2",
+	"releasenote": "Better error positions. Support different return types.",
+	"tags": [
+		"tink",
+		"cross",
+		"utility",
+		"template"
+	],
+	"license": "MIT"
+}

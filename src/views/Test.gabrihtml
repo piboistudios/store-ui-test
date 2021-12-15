@@ -1,0 +1,8 @@
+User <em>{g:this.name:g}</em>'s friends:
+<ul>
+{g:for friend in this.friends:g}
+  <li>
+    {g:friend:g}
+  </li>
+{g:end:g}
+</ul>
