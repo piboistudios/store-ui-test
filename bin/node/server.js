@@ -13011,7 +13011,7 @@ views_ProductListView.prototype = {
 		while(_g < _g1.length) {
 			var product = _g1[_g];
 			++_g;
-			ret.out += "\r\n    <div class=\"col-4\">\r\n        <div class=\"card\">\r\n            <img class=\"card-img-top\" src=\"";
+			ret.out += "\r\n    <div class=\"col-md-6\">\r\n        <div class=\"card\">\r\n            <img class=\"card-img-top\" src=\"";
 			var b = tink_template_Html.escape(product.image);
 			ret.out += b;
 			ret.out += "\" alt=\"Facilis Group, or something like that\" />\r\n            <div class=\"card-body\">\r\n                <div class=\"card-title\">\r\n                    <h5>";
@@ -13020,7 +13020,7 @@ views_ProductListView.prototype = {
 			ret.out += "</h5>\r\n                    <img src=\"https://avatars.dicebear.com/api/initials/";
 			var b2 = tink_template_Html.escape(product.vendor);
 			ret.out += b2;
-			ret.out += ".svg?size=32\" />\r\n                </div>\r\n                <div class=\"card-text\">\r\n                    <strong class=\"text-muted\">$";
+			ret.out += ".svg?size=32\"/>\r\n                </div>\r\n                <div class=\"card-text\">\r\n                    <strong class=\"text-muted\">$";
 			var b3 = tink_template_Html.of(product.price);
 			ret.out += b3;
 			ret.out += "</strong>\r\n                    <button type=\"button\" class=\"btn btn-primary\" id=\"view-product-";
@@ -13032,22 +13032,28 @@ views_ProductListView.prototype = {
 			ret.out += "\">\r\n        <img class=\"card-img-top\" src=\"";
 			var b6 = tink_template_Html.escape(product.image);
 			ret.out += b6;
-			ret.out += "\" alt=\"Facilis Group, or something like that\" />\r\n        <div class=\"card-body\">\r\n            <form method=\"dialog\">\r\n                <div class=\"card-title\">\r\n                    <h3>";
+			ret.out += "\" alt=\"Facilis Group, or something like that\" />\r\n            <div class=\"card-body\">\r\n                <form method=\"dialog\">\r\n                    <div class=\"card-title\">\r\n                        <h3>";
 			var b7 = tink_template_Html.escape(product.name);
 			ret.out += b7;
-			ret.out += "</h3>\r\n                    <h5>\r\n                        <div class=\"panel d-flex align-items-center\"><img src=\"https://avatars.dicebear.com/api/initials/";
+			ret.out += "</h3>\r\n                        <h5><div class=\"panel d-flex align-items-center\"><img src=\"https://avatars.dicebear.com/api/initials/";
 			var b8 = tink_template_Html.escape(product.vendor);
 			ret.out += b8;
-			ret.out += ".svg?size=64\" /></div> ";
+			ret.out += ".svg?size=64\"/></div> ";
 			var b9 = tink_template_Html.escape(product.vendor);
 			ret.out += b9;
-			ret.out += " </h5>\r\n                </div>\r\n                <em>";
+			ret.out += " </h5>\r\n                    </div>\r\n                    <em>";
 			var b10 = tink_template_Html.escape(product.desc);
 			ret.out += b10;
-			ret.out += "</em>\r\n                <strong>$";
+			ret.out += "</em>\r\n                    <strong>$";
 			var b11 = tink_template_Html.of(product.price);
 			ret.out += b11;
-			ret.out += "</strong>\r\n                <<menu>\r\n                    <button class=\"btn btn-secondary\" value=\"cancel\">Close</button>\r\n                    </menu>\r\n            </form>\r\n        </div>\r\n    </dialog>\r\n    <!-- IE POLYFILL -->\r\n\r\n    <script type=\"text/javascript\">\r\n        // IE POLYFILL\r\n\r\n\r\n        var dialog = document.getElementById('product-dialog-' + {\r\n            g: product.id: g\r\n        });\r\n        // dialogPolyfill.registerDialog(dialog);\r\n        var trigger = document.getElementById('view-product-' + {\r\n            g: product.id: g\r\n        });\r\n        trigger.addEventListener('click', function(e) {\r\n            dialog.showModal();\r\n        });\r\n    </script>\r\n    ";
+			ret.out += "</strong>\r\n                    <<menu>\r\n                        <button class=\"btn btn-secondary\" value=\"cancel\">Close</button>                \r\n                    </menu>\r\n                </form>\r\n            </div>\r\n    </dialog>\r\n    <!-- IE POLYFILL -->\r\n    \r\n    <script type=\"text/javascript\">\r\n        // IE POLYFILL\r\n        \r\n\r\n        var dialog = document.getElementById('product-dialog-'+";
+			var b12 = tink_template_Html.of(product.id);
+			ret.out += b12;
+			ret.out += ");\r\n        // dialogPolyfill.registerDialog(dialog);\r\n        var trigger = document.getElementById('view-product-'+";
+			var b13 = tink_template_Html.of(product.id);
+			ret.out += b13;
+			ret.out += ");\r\n        trigger.addEventListener('click', function(e) {\r\n            dialog.showModal();\r\n        });\r\n        \r\n    </script>\r\n    ";
 		}
 		ret.out += "\r\n</div>";
 		return ret.out;

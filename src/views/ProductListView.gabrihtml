@@ -1,13 +1,13 @@
 <div class="row">
 
     {g:for product in products:g}
-    <div class="col-4">
+    <div class="col-md-6">
         <div class="card">
             <img class="card-img-top" src="{g:product.image:g}" alt="Facilis Group, or something like that" />
             <div class="card-body">
                 <div class="card-title">
                     <h5>{g:product.name:g}</h5>
-                    <img src="https://avatars.dicebear.com/api/initials/{g:product.vendor:g}.svg?size=32" />
+                    <img src="https://avatars.dicebear.com/api/initials/{g:product.vendor:g}.svg?size=32"/>
                 </div>
                 <div class="card-text">
                     <strong class="text-muted">${g:product.price:g}</strong>
@@ -18,37 +18,33 @@
     </div>
     <dialog class="card" id="product-dialog-{g:product.id:g}">
         <img class="card-img-top" src="{g:product.image:g}" alt="Facilis Group, or something like that" />
-        <div class="card-body">
-            <form method="dialog">
-                <div class="card-title">
-                    <h3>{g:product.name:g}</h3>
-                    <h5>
-                        <div class="panel d-flex align-items-center"><img src="https://avatars.dicebear.com/api/initials/{g:product.vendor:g}.svg?size=64" /></div> {g:product.vendor:g} </h5>
-                </div>
-                <em>{g:product.desc:g}</em>
-                <strong>${g:product.price:g}</strong>
-                <<menu>
-                    <button class="btn btn-secondary" value="cancel">Close</button>
+            <div class="card-body">
+                <form method="dialog">
+                    <div class="card-title">
+                        <h3>{g:product.name:g}</h3>
+                        <h5><div class="panel d-flex align-items-center"><img src="https://avatars.dicebear.com/api/initials/{g:product.vendor:g}.svg?size=64"/></div> {g:product.vendor:g} </h5>
+                    </div>
+                    <em>{g:product.desc:g}</em>
+                    <strong>${g:product.price:g}</strong>
+                    <<menu>
+                        <button class="btn btn-secondary" value="cancel">Close</button>                
                     </menu>
-            </form>
-        </div>
+                </form>
+            </div>
     </dialog>
     <!-- IE POLYFILL -->
-
+    
     <script type="text/javascript">
         // IE POLYFILL
+        
 
-
-        var dialog = document.getElementById('product-dialog-' + {
-            g: product.id: g
-        });
+        var dialog = document.getElementById('product-dialog-'+{g:product.id:g});
         // dialogPolyfill.registerDialog(dialog);
-        var trigger = document.getElementById('view-product-' + {
-            g: product.id: g
-        });
+        var trigger = document.getElementById('view-product-'+{g:product.id:g});
         trigger.addEventListener('click', function(e) {
             dialog.showModal();
         });
+        
     </script>
     {g:end:g}
 </div>
