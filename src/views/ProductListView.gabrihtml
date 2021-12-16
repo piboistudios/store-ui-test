@@ -26,7 +26,7 @@
                     </div>
                     <em>{g:product.desc:g}</em>
                     <strong>${g:product.price:g}</strong>
-                    <<menu>
+                    <menu>
                         <button class="btn btn-secondary" value="cancel">Close</button>                
                     </menu>
                 </form>

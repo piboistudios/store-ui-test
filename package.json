@@ -1,0 +1,19 @@
+{
+    "name": "store-ui-test",
+    "version": "1.0.0",
+    "description": "A store UI demo",
+    "main": "bin/node/server.js",
+    "scripts": {
+        "start": "node bin/node/server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/piboistudios/store-ui-test.git"
+    },
+    "author": "Gabriel A Hayes",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/piboistudios/store-ui-test/issues"
+    },
+    "homepage": "https://github.com/piboistudios/store-ui-test#readme"
+}

@@ -47,7 +47,8 @@ class ProductsRouterBase {
 	public function new(db) {
 		this.db = db;
 	}
-
+    @:get('/')
+    public function index() return get_content("index.html");
 	@:get('/test')
 	public function test_template() {
 		var test = new TestView('Gabriel');

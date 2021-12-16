@@ -15,60 +15,72 @@
             <v-main>
                 <v-container>
                     <v-row>
+                        <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
+                            <v-card v-if="openedProduct">
+                                <v-toolbar dark color="primary">
+                                    <v-btn icon dark @click="dialog = false">
+                                        <v-icon>mdi-close</v-icon>
+                                    </v-btn>
+                                    <v-toolbar-title>{{openedProduct.name}}</v-toolbar-title>
+                                    <v-spacer></v-spacer>
+                                    <v-toolbar-items>
+                                        <v-btn dark text @click="dialog = false">
+                                            Back
+                                        </v-btn>
+                                    </v-toolbar-items>
+                                </v-toolbar>
+                                <v-img width="256" :src="openedProduct.image"></v-img>
+                                <v-list three-line subheader>
+                                    <v-list-item>
+                                        <v-list-item-content>
+                                            <v-list-item-title>
+                                                <v-img height="96" width="96" src="https://avatars.dicebear.com/api/initials/{g:openedProduct.vendor:g}.svg?size=96"></v-img>
+                                                {{openedProduct.vendor}}
+                                            </v-list-item-title>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                    <v-subheader>{{openedProduct.desc}}</v-subheader>
+                                    <v-list-item>
+                                        <v-list-item-content>
+                                            <v-list-item-title>Price</v-list-item-title>
+                                            <v-list-item-subtitle class="text--teal-darken-4">${{openedProduct.price}}</v-list-item-subtitle>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                </v-list>
+                                <v-divider></v-divider>
+                            </v-card>
+                        </v-dialog>
                         <v-col v-for="product in products" class="col-4">
                             <v-card>
                                 <v-img :src="product.image"></v-img>
                                 <v-card-title>
-                                    {{product.name}}
-                                    <v-card-img height="32" src="https://avatars.dicebear.com/api/initials/{g:product.vendor:g}.svg?size=32"></v-card-img>
+                                    <v-container>
+
+                                        <v-row>
+                                            <v-col>
+                                                {{product.name}}
+                                            </v-col>
+                                        </v-row>
+                                        <v-row>
+                                            <v-col>
+
+                                                <v-img height="32" width="32" src="https://avatars.dicebear.com/api/initials/{g:product.vendor:g}.svg?size=32"></v-img>
+                                            </v-col>
+                                        </v-row>
+                                    </v-container>
                                 </v-card-title>
                                 <v-card-text>
                                     <v-row>
-                                        <v-rating :value="Math.round(Math.random() * 100000000000 % 5)"></v-rating>
+                                        <v-rating :value="product.rating"></v-rating>
                                     </v-row>
                                 </v-card-text>
                                 <v-card-title class="text--teal darken-3">${{product.price}}</v-card-title>
                                 <v-card-actions>
                                     <v-row justify="center">
-                                        <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
-                                            <template v-slot:activator="{ on, attrs }">
-                                            <v-btn
-                                              color="primary"
-                                              dark
-                                              v-bind="attrs"
-                                              v-on="on"
-                                            >
-                                              Open Dialog
-                                            </v-btn>
-                                          </template>
-                                            <v-card>
-                                                <v-toolbar dark color="primary">
-                                                    <v-btn icon dark @click="dialog = false">
-                                                        <v-icon>mdi-close</v-icon>
-                                                    </v-btn>
-                                                    <v-toolbar-title>{{product.name}}</v-toolbar-title>
-                                                    <v-spacer></v-spacer>
-                                                    <v-toolbar-items>
-                                                        <v-btn dark text @click="dialog = false">
-                                                            Back
-                                                        </v-btn>
-                                                    </v-toolbar-items>
-                                                </v-toolbar>
-                                                <v-img width="256" :src="product.image"></v-img>
-                                                <v-list three-line subheader>
-                                                    <v-subheader>{{product.desc}}</v-subheader>
-                                                    <v-list-item>
-                                                        <v-list-item-content>
-                                                            <v-list-item-title>Price</v-list-item-title>
-                                                            <v-list-item-subtitle class="text--teal-darken-4">${{product.price}}</v-list-item-subtitle>
-                                                        </v-list-item-content>
-                                                    </v-list-item>
-                                                </v-list>
-                                                <v-divider></v-divider>
-                                            </v-card>
-                                        </v-dialog>
+                                        <v-btn color="primary" dark @click="openDialog(product)">
+                                            View
+                                        </v-btn>
                                     </v-row>
-                                    </v-btn>
                                 </v-card-actions>
                             </v-card>
                         </v-col>
@@ -83,14 +95,17 @@
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
     <script>
         const PAGE_SIZE = 20;
+        const ratings = [];
         new Vue({
             el: '#app',
             vuetify: new Vuetify(),
             mounted() {
                 this.page = 1;
+
             },
             data() {
                 return {
+                    openedProduct: null,
                     products: [],
                     dialog: false,
                     page: 0
@@ -102,17 +117,25 @@
                 }
             },
             methods: {
+                openDialog(product) {
+                    this.openedProduct = product;
+                    this.dialog = true;
+                },
                 updateProducts() {
+
                     const skip = (this.page - 1) * PAGE_SIZE;
                     const limit = PAGE_SIZE;
-                    axios.get("/api/products?skip", {
+                    axios.get("/api/products", {
                             params: {
                                 skip,
                                 limit
                             }
                         })
                         .then(response => {
-                            this.products = response.data;
+                            this.products = response.data.map(product => {
+                                product.rating = Math.round(Math.random() * 100000000000 % 5);
+                                return product;
+                            })
                         })
                         .catch(err => {
                             console.log({
