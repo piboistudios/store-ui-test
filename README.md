@@ -44,7 +44,7 @@ Without further changes the structure is following:
  ![demo 2](https://github.com/piboistudios/store-ui-test/blob/master/dist/demo2.png?raw=true)
  ![demo 3](https://github.com/piboistudios/store-ui-test/blob/master/dist/demo3.PNG?raw=true)
  ![demo 4](https://github.com/piboistudios/store-ui-test/blob/master/dist/demo4.png?raw=true)
- ![demo 4](https://github.com/piboistudios/store-ui-test/blob/master/dist/demo4.png?raw=true)
+ ![demo 5](https://github.com/piboistudios/store-ui-test/blob/master/dist/demo5.png?raw=true)
 
 ### Conclusion
 The server pages equivalent is much longer, and more tedious, with less functionality.
