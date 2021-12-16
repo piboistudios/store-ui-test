@@ -1,6 +1,6 @@
 # A Foreward
 
-I basically made this because I'm tired of tenured .NET fanboys acting like pre-Satya Nadella Microsoft technology was worth a damn. And frankly, even still some of the stuff they put out is questionable. The most questionable thing (in my opinion) is their strange fetish for "server pages" style architecure as I like to call it... Here's (just) 3 reasons off the top of my head why server pages style tech is stupid: 
+I basically made this because I'm tired of tenured .NET fanboys acting like pre-Satya Nadella Microsoft technology was worth a damn. And frankly, even still some of the stuff they put out is questionable. The most questionable thing (in my opinion) is their strange fetish for "server pages" style architecture as I like to call it... Here's (just) 3 reasons off the top of my head why server pages style tech is stupid: 
 
 1. It's a violation of the separation of concerns, which is a fundamental software design principle. If you disagree, stop designing software.
 
@@ -52,7 +52,7 @@ On the other hand the SPA has more mark up because I added way more mark up (a f
 
 I also made the SPA in 30 minutes. The server pages took about 2 hours.
 
-4x the time and effort for a crappier, slower website... but .NET fanboys luv dis stuff
+4x the time and effort for a crappier, slower website... but .NET fanboys luv dis stuffg
 
 Server pages (ASP, vanilla PHP, JSP, rat's pee) all suck, please stop using them. And please stop believing everything Microsoft says about technology... they're wrong all the time. As an example, the SmtpClient, which Microsoft used to endorse like crazy about 10 years ago (and is riddled with problems... because it was poorly designed, which is why they stopped maintaining it):
  ![why Microsoft is total trash](https://github.com/piboistudios/store-ui-test/blob/master/dist/why-microsoft-is-garbage.png?raw=true)
