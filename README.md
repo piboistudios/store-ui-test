@@ -47,5 +47,12 @@ Without further changes the structure is following:
  ![demo 4](https://github.com/piboistudios/store-ui-test/blob/master/dist/demo4.png?raw=true)
 
 ### Conclusion
+The server pages equivalent is much longer, and more tedious, with less functionality.
+On the other hand the SPA has more mark up because I added way more mark up (a full screen dialog... that works on mobile devices).
+
+I also made the SPA in 30 minutes. The server pages took about 2 hours.
+
+4x the time and effort for a crappier, slower website... but .NET fanboys luv dis stuff
+
 Server pages (ASP, vanilla PHP, JSP, rat's pee) all suck, please stop using them. And please stop believing everything Microsoft says about technology... they're wrong all the time. As an example, the SmtpClient, which Microsoft used to endorse like crazy about 10 years ago (and is riddled with problems... because it was poorly designed, which is why they stopped maintaining it):
  ![why Microsoft is total trash](https://github.com/piboistudios/store-ui-test/blob/master/dist/why-microsoft-is-garbage.png?raw=true)
