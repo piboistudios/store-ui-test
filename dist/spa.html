@@ -13,7 +13,7 @@
     <div id="app">
         <v-app>
             <v-main>
-                <v-container>
+                <v-container fluid>
                     <v-row>
                         <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
                             <v-card v-if="openedProduct">
@@ -29,27 +29,42 @@
                                         </v-btn>
                                     </v-toolbar-items>
                                 </v-toolbar>
-                                <v-img width="256" :src="openedProduct.image"></v-img>
-                                <v-list three-line subheader>
-                                    <v-list-item>
-                                        <v-list-item-content>
-                                            <v-list-item-title class="mb-5">
-                                                <v-img height="96" width="96" :src="`https://avatars.dicebear.com/api/initials/${openedProduct.supplierName}.svg?size=96`">
-                                                </v-img>
-                                                {{openedProduct.supplierName}}
+                                <v-container fluid>
+                                    <v-row class="my-8 my-md-0">
+                                        <v-col>
 
-                                            </v-list-item-title>
-                                        </v-list-item-content>
-                                    </v-list-item>
-                                    <v-subheader class="my-5">{{openedProduct.desc}}</v-subheader>
-                                    <v-list-item>
-                                        <v-list-item-content>
+
+                                            <v-img width="256" :src="openedProduct.image"></v-img>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row class="my-10 my-md-0">
+                                        <v-col>
+                                            <v-list three-line subheader>
+                                                <v-list-item>
+                                                    <v-list-item-content>
+                                                        <v-list-item-title class="mb-5">
+                                                            <v-img height="96" width="96" :src="`https://avatars.dicebear.com/api/initials/${openedProduct.supplierName}.svg?size=96`">
+                                                            </v-img>
+                                                            {{openedProduct.supplierName}}
+
+                                                        </v-list-item-title>
+                                                    </v-list-item-content>
+                                                </v-list-item>
+                                        </v-col>
+                                        <v-col>
                                             <v-list-item-title class="mt-5">Price</v-list-item-title>
-                                            <v-list-item-subtitle class="text--teal-darken-4">${{openedProduct.price}}</v-list-item-subtitle>
-                                        </v-list-item-content>
-                                    </v-list-item>
-                                </v-list>
-                                <v-divider></v-divider>
+                                            <v-list-item-subtitle class="teal--text text--darken-3">${{openedProduct.price}}</v-list-item-subtitle>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row class="my-8 my-md-0">
+                                        <v-col>
+                                            <p class="font-weight-light">{{openedProduct.desc}}</p>
+                                        </v-col>
+                                    </v-row>
+                                    <v-divider></v-divider>
+                                </v-container>
+
+
                             </v-card>
                         </v-dialog>
                         <v-col v-for="product in products" class="col-md-4 col-sm-6">
