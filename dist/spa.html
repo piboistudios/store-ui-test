@@ -34,8 +34,10 @@
                                     <v-list-item>
                                         <v-list-item-content>
                                             <v-list-item-title>
-                                                <v-img height="96" width="96" src="https://avatars.dicebear.com/api/initials/{g:openedProduct.vendor:g}.svg?size=96"></v-img>
-                                                {{openedProduct.vendor}}
+                                                <v-img height="96" width="96" :src="`https://avatars.dicebear.com/api/initials/${openedProduct.supplierName}.svg?size=96`">
+                                                </v-img>
+                                                {{openedProduct.supplierName}}
+
                                             </v-list-item-title>
                                         </v-list-item-content>
                                     </v-list-item>
@@ -64,7 +66,7 @@
                                         <v-row>
                                             <v-col>
 
-                                                <v-img height="32" width="32" src="https://avatars.dicebear.com/api/initials/{g:product.vendor:g}.svg?size=32"></v-img>
+                                                <v-img height="32" width="32" :src="`https://avatars.dicebear.com/api/initials/${product.supplierName}.svg?size=32`"></v-img>
                                             </v-col>
                                         </v-row>
                                     </v-container>
