@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <title>What is a SPA?</title>
+</head>
+
+<body>
+    <h1>What is a <a href="https://en.wikipedia.org/wiki/Single-page_application#:~:text=A%20single%2Dpage%20application%20(SPA,browser%20loading%20entire%20new%20pages.">SPA</a>?</h1>
+    <div>
+        <p>A SPA is a Single Page Application. It is exactly what the name implies.</p>
+        <p>As modern web design has come a long way, so also has JavaScript; it is now possible (or much more feasible) to package the functionality of an entire web application spanning many pages into one page, and have a reactive JavaScript library update
+            the page in realtime.</p>
+        <p><strong>Who cares?</strong></p>
+        <p>Well, you care, because if the entire website loads at once, this means you don't have to wait for page reloads.</p>
+        <p>Notice in the <a href="/views/products?page=1">Crappy Server Pages</a> every time you click on a button on the pagination component, it reloads the page. But in the <a href="/spa.html">SPA</a> version, changing pages does not cause a page reload.
+            That is the standard practice for updating a server page (or at least, most server page frameworks are designed in such a way that the simplest way to update a page is reloading it entirely). In a SPA, the page stays the same and just responds
+            to data it receives from the web server (rather than receiving entire web pages from the web server)</p>
+        <p>Whenever you hear "
+            <a href="https://reactjs.org/">React.js</a>" or "<a href="https://vuejs.org/">Vue.js</a>" or even "
+            <a href="https://angularjs.org/">Angular.js</a>", they're talking about modern JS Frameworks used to create SPAs.</p>
+        <p>Whenever you hear "jQuery" they're probably talking about server pages (jQuery actually offers no added functionality in 2021; vanillaJS with the advent of <code>querySelectorAll</code> basically does everything jQuery does... except it doesn't
+            use a stupid
+            <code>$</code> API, and it has ES6 Promises)</p>
+    </div>
+    <footer style="width:100%;text-align:center"><a href="/">Go back</a></footer>
+</body>
+
+</html>
