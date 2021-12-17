@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Why (pre-Satya) Microsoft was stupid</title>
+</head>
+
+<body>
+    <h1>Why (<a href="#pre-satya">pre-Satya<sup>1</sup></a>) Microsoft was stupid</h1>
+    <div>
+        <small><a href="/">Go back</a></small>
+        <p>I have 3 years of professional experience working with Microsoft stacks.</p>
+        <p>I've been programmer since I was 12 (making <a href="https://www.byond.com/games/choka">wacky little</a> <a href="https://www.byond.com/games/illim">web games</a>).</p>
+        <p>My professional opinion of Microsoft is this:</p>
+        <div>
+            <em>
+                    <p>
+
+                        While, they pioneer a lot of robust (and even daring) technologies, because of their tendency to trailblaze with little foresight, they often end up creating overengineered solutions that are only designed that way to follow "industry standards" (which they are also largely responsible for setting...).
+                    </p>
+                    <p>
+                        Overengineering causes poor designs that add layer upon layer of complexity to an otherwise simple concept. They tend to do this because they focus really hard on <a href="https://en.wikipedia.org/wiki/Design_Patterns">Design Patterns</a> (many of which are good, when used properly, but when misused/abused they lead to overengineering and <em>quickly</em>;
+            for example Dependency Injection, which is <em>not</em> one of the Gang of Four's design patterns in and of itself...)
+            </p>
+            <p>
+                Microsoft is notorious for this, and I will use this webpage to list off great examples of it:
+            </p>
+            </em>
+        </div>
+    </div>
+    <div>
+        <ul>
+            <li><strong><a href="https://docs.microsoft.com/en-us/dotnet/api/system.net.mail.smtpclient?view=net-6.0">The standard SMTP Client</a></strong> - This bad boy is so terrible they just stopped trying to support it altogether. For reference it is
+                responsible for lots of undisposed connections, protocol failures and other things. While I've never cracked open the source code, the only good reason I can think of that an SMTP client would fail to keep up to date with protocol standards
+                (when the software itself is supported by an absolute titan like Microsoft) is because it was hard to maintain. Software is hard to maintain when its poorly designed, which overengineering leads to; poor design.</em>
+            </li>
+            <li>
+                <strong><a href="https://stackoverflow.com/questions/130794/what-is-dependency-injection">Unity Framework</a></strong> - I don't know why, but Microsoft (and their dogmatic fanboys) have this huge hard on for dependency injection. Dependency
+                injection is basically an extension of the <a href="https://en.wikipedia.org/wiki/Inversion_of_control">Inversion of Control</a> design pattern. The main "advantage" of dependency injection is decoupling classes from their dependencies.On
+                the other hand it comes with <a href="https://en.wikipedia.org/wiki/Dependency_injection#Disadvantages">several drawbacks</a>. You instantiate and populate objects all the time, why the <em>hell</em> would you need a library that reads
+                from a separate config file to then do the <em>exact</em> same thing for you? It also uses <a href="/metaprogramming.html">metaprogramming</a> to achieve this (which is why it makes the code/stack traces harder to follow, it creates types
+                that literally are not in your code or the unity framework dll).
+            </li>
+            <li><strong>The large adoption of XML over JSON</strong> - I blame Microsoft for this because XML is used for pretty much every configuration possible, and because of this they keep introducing more and more and more tools to deal with XML.. they
+                arguably have the best XML parsers (I mean, their XML parsers literally generate class libraries...). The only value of XML is the fact that there are systems that use XML. Which, is ironically the exact same reason a lot of older developers
+                don't believe in the block chain lmfao. XML has no real value, its longer than JSON and does not translate directly to objects (which JSON does... because it was meant to from the beginning). You can also represent the exact same data
+                in XML multiple ways, for example an array. This little rant leads me to</li>
+            <li><strong><a href="https://docs.microsoft.com/en-us/dotnet/framework/wcf/whats-wcf">WCF (and SOAP)</a></strong> - WCF is basically supposed to make the process of writing RPC code easier. Supposed to. Instead what you often end up with is a
+                bunch of crap buried in a hard to read XML config file, the problem with XML configs are, a value can either be an attribute, or a child node. So if I say "Oh just change the TargetURL property" you have to then ask me "Is that in a child
+                node or an attribute?". XML tried to be useful by coming with schemas (XSD), which led to the advent of SOAP and generation of SOAP clients. The problem with requiring schemas to interact with a service is, if at any time the service contract
+                (e.g. the data types the web service publicly exposees) changes... <em>Are you ready for this?</em>... all client applications break. <em>Ba dum tss</em></li>
+            <li>And the list goes on... just you wait, this is just off the top of my head</li>
+        </ul>
+    </div>
+    <footer>
+        <small>
+            <em>
+                <ol>
+                    <li>
+                        <a href="#pre-satya"></a>
+                        Microsoft seems to have taken a more positive turn as it focuses on Cloud development under Satya Nadella.. who once said "Microsoft ❤️ Linux" a very open minded stance (which is uncharacteristic of Microsoft dogma boys). In general, my only real gripe is with .NET devs who were evangelized prior to 2014 (you know, the ones who don't even know what Mono .NET is)
+                    </li>
+                </ol>
+            </em>
+        </small>
+        <div style="width:100%;text-align:center"><a href="/">Go back</a></div>
+    </footer>
+</body>
+
+</html>

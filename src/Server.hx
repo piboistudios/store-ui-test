@@ -24,7 +24,8 @@ class Server {
 			SECRET = Base64.decode(sys.io.File.getContent('./secrets/dbPass'));
 			AppConfig.init();
 		}
-		var container = new NodeContainer(Sys.args()[0]);
+        trace(Sys.args());
+		var container = new NodeContainer(8080);
 		trace(AppConfig.data.connectionStrings.keys());
 		ProductDatabase.connect(AppConfig.data.connectionStrings["product"])
 			.next(db -> {

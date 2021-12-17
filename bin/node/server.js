@@ -234,10 +234,11 @@ Server.main = function() {
 	Server.KEY = js_node_Fs.readFileSync("./secrets/privKey",{ encoding : "utf8"});
 	Server.SECRET = haxe_crypto_Base64.decode(js_node_Fs.readFileSync("./secrets/dbPass",{ encoding : "utf8"}));
 	AppConfig.init();
-	var container = new tink_http_containers_NodeContainer(tink_http_containers__$NodeContainer_ServerKindBase.Path(process.argv.slice(2)[0]));
-	console.log("src/Server.hx:28:",new haxe_ds__$StringMap_StringMapKeyIterator(AppConfig.get_data().connectionStrings.h));
+	console.log("src/Server.hx:27:",process.argv.slice(2));
+	var container = new tink_http_containers_NodeContainer(tink_http_containers__$NodeContainer_ServerKindBase.Port(8080));
+	console.log("src/Server.hx:29:",new haxe_ds__$StringMap_StringMapKeyIterator(AppConfig.get_data().connectionStrings.h));
 	var f = function(e) {
-		console.log("src/Server.hx:37:","Error connecting to database: " + Std.string(e));
+		console.log("src/Server.hx:38:","Error connecting to database: " + Std.string(e));
 		return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(e)));
 	};
 	tink_core_Future.flatMap(tink_core_Promise.next(dal_ProductDatabase.connect(AppConfig.get_data().connectionStrings.h["product"]),function(db) {
@@ -12604,7 +12605,7 @@ tink_web_routing_Router0.prototype = {
 						return this.test_template(ctx);
 					} else {
 						var this1 = ctx.request.header.url;
-						return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 31, className : "tink.web.routing.Router0", methodName : "route"}))));
+						return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 32, className : "tink.web.routing.Router0", methodName : "route"}))));
 					}
 					break;
 				case "views":
@@ -12614,7 +12615,7 @@ tink_web_routing_Router0.prototype = {
 						return this.get_content(ctx,_g1);
 					} else {
 						var this1 = ctx.request.header.url;
-						return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 31, className : "tink.web.routing.Router0", methodName : "route"}))));
+						return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 32, className : "tink.web.routing.Router0", methodName : "route"}))));
 					}
 				}
 			} else {
@@ -12627,7 +12628,7 @@ tink_web_routing_Router0.prototype = {
 					return this.beautiful_rest_api(ctx,1);
 				} else {
 					var this1 = ctx.request.header.url;
-					return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 31, className : "tink.web.routing.Router0", methodName : "route"}))));
+					return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 32, className : "tink.web.routing.Router0", methodName : "route"}))));
 				}
 				break;
 			case "views":
@@ -12635,12 +12636,12 @@ tink_web_routing_Router0.prototype = {
 					return this.crappy_server_pages_sub(ctx,1);
 				} else {
 					var this1 = ctx.request.header.url;
-					return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 31, className : "tink.web.routing.Router0", methodName : "route"}))));
+					return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 32, className : "tink.web.routing.Router0", methodName : "route"}))));
 				}
 				break;
 			default:
 				var this1 = ctx.request.header.url;
-				return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 31, className : "tink.web.routing.Router0", methodName : "route"}))));
+				return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 32, className : "tink.web.routing.Router0", methodName : "route"}))));
 			}
 		}
 	}
@@ -12720,11 +12721,11 @@ tink_web_routing_Router1.prototype = {
 								return this.products_list_view(ctx);
 							} else {
 								var this1 = ctx.request.header.url;
-								return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 59, className : "tink.web.routing.Router1", methodName : "route"}))));
+								return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 60, className : "tink.web.routing.Router1", methodName : "route"}))));
 							}
 						} else {
 							var this1 = ctx.request.header.url;
-							return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 59, className : "tink.web.routing.Router1", methodName : "route"}))));
+							return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 60, className : "tink.web.routing.Router1", methodName : "route"}))));
 						}
 					} else {
 						return this.products_view(ctx);
@@ -12739,7 +12740,7 @@ tink_web_routing_Router1.prototype = {
 						return this.test_template(ctx);
 					} else {
 						var this1 = ctx.request.header.url;
-						return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 59, className : "tink.web.routing.Router1", methodName : "route"}))));
+						return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 60, className : "tink.web.routing.Router1", methodName : "route"}))));
 					}
 				} else {
 					return this.index(ctx);
@@ -12758,7 +12759,7 @@ tink_web_routing_Router1.prototype = {
 						return this.get_content(ctx,_g1);
 					} else {
 						var this1 = ctx.request.header.url;
-						return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 59, className : "tink.web.routing.Router1", methodName : "route"}))));
+						return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 60, className : "tink.web.routing.Router1", methodName : "route"}))));
 					}
 				} else {
 					return this.index(ctx);
@@ -12771,7 +12772,7 @@ tink_web_routing_Router1.prototype = {
 					return this.beautiful_rest_api(ctx,1);
 				} else {
 					var this1 = ctx.request.header.url;
-					return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 59, className : "tink.web.routing.Router1", methodName : "route"}))));
+					return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 60, className : "tink.web.routing.Router1", methodName : "route"}))));
 				}
 				break;
 			case "views":
@@ -12779,18 +12780,18 @@ tink_web_routing_Router1.prototype = {
 					return this.crappy_server_pages_sub(ctx,1);
 				} else {
 					var this1 = ctx.request.header.url;
-					return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 59, className : "tink.web.routing.Router1", methodName : "route"}))));
+					return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 60, className : "tink.web.routing.Router1", methodName : "route"}))));
 				}
 				break;
 			default:
 				var this1 = ctx.request.header.url;
-				return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 59, className : "tink.web.routing.Router1", methodName : "route"}))));
+				return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 60, className : "tink.web.routing.Router1", methodName : "route"}))));
 			}
 		}
 	}
 	,products_view: function(ctx) {
 		var _gthis = this;
-		return tink_core_Promise.next(new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(new tink_querystring_Parser0(null,{ fileName : "src/Server.hx", lineNumber : 109, className : "tink.web.routing.Router1", methodName : "products_view"}).tryParse(new tink_url__$Query_QueryStringParser(ctx.request.header.url.query,"&","=",0)))),function(__query__) {
+		return tink_core_Promise.next(new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(new tink_querystring_Parser0(null,{ fileName : "src/Server.hx", lineNumber : 110, className : "tink.web.routing.Router1", methodName : "products_view"}).tryParse(new tink_url__$Query_QueryStringParser(ctx.request.header.url.query,"&","=",0)))),function(__query__) {
 			return tink_core_Promise.next(new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Success(_gthis.target.products_view(__query__._0)))),function(v) {
 				return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Success(tink_web_routing_Response.ofHtml(v))));
 			});
@@ -12798,7 +12799,7 @@ tink_web_routing_Router1.prototype = {
 	}
 	,products_list_view: function(ctx) {
 		var _gthis = this;
-		return tink_core_Promise.next(new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(new tink_querystring_Parser1(null,{ fileName : "src/Server.hx", lineNumber : 122, className : "tink.web.routing.Router1", methodName : "products_list_view"}).tryParse(new tink_url__$Query_QueryStringParser(ctx.request.header.url.query,"&","=",0)))),function(__query__) {
+		return tink_core_Promise.next(new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(new tink_querystring_Parser1(null,{ fileName : "src/Server.hx", lineNumber : 123, className : "tink.web.routing.Router1", methodName : "products_list_view"}).tryParse(new tink_url__$Query_QueryStringParser(ctx.request.header.url.query,"&","=",0)))),function(__query__) {
 			return tink_core_Promise.next(new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Success(_gthis.target.products_list_view(__query__._1)))),function(v) {
 				return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Success(tink_web_routing_Response.ofHtml(v))));
 			});
@@ -12876,7 +12877,7 @@ tink_web_routing_Router2.prototype = {
 						return this.getProducts(ctx);
 					} else {
 						var this1 = ctx.request.header.url;
-						return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 63, className : "tink.web.routing.Router2", methodName : "route"}))));
+						return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 64, className : "tink.web.routing.Router2", methodName : "route"}))));
 					}
 				} else {
 					return this.index(ctx);
@@ -12888,7 +12889,7 @@ tink_web_routing_Router2.prototype = {
 						return this.test_template(ctx);
 					} else {
 						var this1 = ctx.request.header.url;
-						return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 63, className : "tink.web.routing.Router2", methodName : "route"}))));
+						return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 64, className : "tink.web.routing.Router2", methodName : "route"}))));
 					}
 				} else {
 					return this.index(ctx);
@@ -12907,7 +12908,7 @@ tink_web_routing_Router2.prototype = {
 						return this.get_content(ctx,_g1);
 					} else {
 						var this1 = ctx.request.header.url;
-						return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 63, className : "tink.web.routing.Router2", methodName : "route"}))));
+						return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 64, className : "tink.web.routing.Router2", methodName : "route"}))));
 					}
 				} else {
 					return this.index(ctx);
@@ -12920,7 +12921,7 @@ tink_web_routing_Router2.prototype = {
 					return this.beautiful_rest_api(ctx,1);
 				} else {
 					var this1 = ctx.request.header.url;
-					return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 63, className : "tink.web.routing.Router2", methodName : "route"}))));
+					return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 64, className : "tink.web.routing.Router2", methodName : "route"}))));
 				}
 				break;
 			case "views":
@@ -12928,23 +12929,23 @@ tink_web_routing_Router2.prototype = {
 					return this.crappy_server_pages_sub(ctx,1);
 				} else {
 					var this1 = ctx.request.header.url;
-					return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 63, className : "tink.web.routing.Router2", methodName : "route"}))));
+					return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 64, className : "tink.web.routing.Router2", methodName : "route"}))));
 				}
 				break;
 			default:
 				var this1 = ctx.request.header.url;
-				return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 63, className : "tink.web.routing.Router2", methodName : "route"}))));
+				return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(404,"Not Found: [" + ctx.request.header.method + "] " + (this1.query == null ? this1.path : (this1.path == null ? "null" : this1.path) + "?" + (this1.query == null ? "null" : this1.query)),{ fileName : "src/Server.hx", lineNumber : 64, className : "tink.web.routing.Router2", methodName : "route"}))));
 			}
 		}
 	}
 	,getProducts: function(ctx) {
 		var _gthis = this;
-		return tink_core_Promise.next(new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(new tink_querystring_Parser2(null,{ fileName : "src/Server.hx", lineNumber : 83, className : "tink.web.routing.Router2", methodName : "getProducts"}).tryParse(new tink_url__$Query_QueryStringParser(ctx.request.header.url.query,"&","=",0)))),function(__query__) {
+		return tink_core_Promise.next(new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(new tink_querystring_Parser2(null,{ fileName : "src/Server.hx", lineNumber : 84, className : "tink.web.routing.Router2", methodName : "getProducts"}).tryParse(new tink_url__$Query_QueryStringParser(ctx.request.header.url.query,"&","=",0)))),function(__query__) {
 			return tink_core_Promise.next(new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Success(_gthis.target.getProducts(__query__._2,__query__._3)))),function(__data__) {
 				if(ctx.accepts("application/json")) {
 					return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Success(tink_web_routing_Response.textual(200,"application/json",new tink_json_Writer0().write(__data__),[]))));
 				}
-				return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(415,"Unsupported Media Type",{ fileName : "src/Server.hx", lineNumber : 83, className : "tink.web.routing.Router2", methodName : "getProducts"}))));
+				return new tink_core__$Future_SyncFuture(new tink_core__$Lazy_LazyConst(tink_core_Outcome.Failure(new tink_core_TypedError(415,"Unsupported Media Type",{ fileName : "src/Server.hx", lineNumber : 84, className : "tink.web.routing.Router2", methodName : "getProducts"}))));
 			});
 		});
 	}
