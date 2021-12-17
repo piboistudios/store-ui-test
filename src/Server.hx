@@ -24,7 +24,7 @@ class Server {
 			SECRET = Base64.decode(sys.io.File.getContent('./secrets/dbPass'));
 			AppConfig.init();
 		}
-		var container = new NodeContainer(8080);
+		var container = new NodeContainer(Sys.args()[0]);
 		trace(AppConfig.data.connectionStrings.keys());
 		ProductDatabase.connect(AppConfig.data.connectionStrings["product"])
 			.next(db -> {
@@ -91,7 +91,7 @@ class CrappyServerPagesRouter extends ProductsRouterBase {
 	static var PRODUCTS_PER_PAGE = 20;
 
 	function get_numPages() {
-		return Math.ceil(db.collection('products').length / 20);
+		return Math.ceil(db.collection('products').length / PRODUCTS_PER_PAGE);
 	}
 
 	var pageStart(get, never):Int;

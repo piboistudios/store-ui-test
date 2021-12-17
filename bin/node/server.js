@@ -234,7 +234,7 @@ Server.main = function() {
 	Server.KEY = js_node_Fs.readFileSync("./secrets/privKey",{ encoding : "utf8"});
 	Server.SECRET = haxe_crypto_Base64.decode(js_node_Fs.readFileSync("./secrets/dbPass",{ encoding : "utf8"}));
 	AppConfig.init();
-	var container = new tink_http_containers_NodeContainer(tink_http_containers__$NodeContainer_ServerKindBase.Port(8080));
+	var container = new tink_http_containers_NodeContainer(tink_http_containers__$NodeContainer_ServerKindBase.Path(process.argv.slice(2)[0]));
 	console.log("src/Server.hx:28:",new haxe_ds__$StringMap_StringMapKeyIterator(AppConfig.get_data().connectionStrings.h));
 	var f = function(e) {
 		console.log("src/Server.hx:37:","Error connecting to database: " + Std.string(e));
@@ -312,7 +312,7 @@ CrappyServerPagesRouter.__name__ = true;
 CrappyServerPagesRouter.__super__ = ProductsRouterBase;
 CrappyServerPagesRouter.prototype = $extend(ProductsRouterBase.prototype,{
 	get_numPages: function() {
-		return Math.ceil(dal_ProductDatabase.collection(this.db,"products").length / 20);
+		return Math.ceil(dal_ProductDatabase.collection(this.db,"products").length / CrappyServerPagesRouter.PRODUCTS_PER_PAGE);
 	}
 	,get_pageStart: function() {
 		return 1;
@@ -453,6 +453,135 @@ StringTools.hex = function(n,digits) {
 	}
 	return s;
 };
+var haxe_io_Output = function() { };
+haxe_io_Output.__name__ = true;
+haxe_io_Output.prototype = {
+	writeByte: function(c) {
+		throw new haxe_exceptions_NotImplementedException(null,null,{ fileName : "haxe/io/Output.hx", lineNumber : 47, className : "haxe.io.Output", methodName : "writeByte"});
+	}
+	,writeBytes: function(s,pos,len) {
+		if(pos < 0 || len < 0 || pos + len > s.length) {
+			throw haxe_Exception.thrown(haxe_io_Error.OutsideBounds);
+		}
+		var b = s.b;
+		var k = len;
+		while(k > 0) {
+			this.writeByte(b[pos]);
+			++pos;
+			--k;
+		}
+		return len;
+	}
+	,close: function() {
+	}
+	,__class__: haxe_io_Output
+};
+var _$Sys_FileOutput = function(fd) {
+	this.fd = fd;
+};
+_$Sys_FileOutput.__name__ = true;
+_$Sys_FileOutput.__super__ = haxe_io_Output;
+_$Sys_FileOutput.prototype = $extend(haxe_io_Output.prototype,{
+	fd: null
+	,writeByte: function(c) {
+		js_node_Fs.writeSync(this.fd,String.fromCodePoint(c));
+	}
+	,writeBytes: function(s,pos,len) {
+		var data = s.b;
+		return js_node_Fs.writeSync(this.fd,js_node_buffer_Buffer.from(data.buffer,data.byteOffset,s.length),pos,len);
+	}
+	,writeString: function(s,encoding) {
+		js_node_Fs.writeSync(this.fd,s);
+	}
+	,flush: function() {
+		js_node_Fs.fsyncSync(this.fd);
+	}
+	,close: function() {
+		js_node_Fs.closeSync(this.fd);
+	}
+	,__class__: _$Sys_FileOutput
+});
+var haxe_io_Input = function() { };
+haxe_io_Input.__name__ = true;
+haxe_io_Input.prototype = {
+	readByte: function() {
+		throw new haxe_exceptions_NotImplementedException(null,null,{ fileName : "haxe/io/Input.hx", lineNumber : 53, className : "haxe.io.Input", methodName : "readByte"});
+	}
+	,readBytes: function(s,pos,len) {
+		var k = len;
+		var b = s.b;
+		if(pos < 0 || len < 0 || pos + len > s.length) {
+			throw haxe_Exception.thrown(haxe_io_Error.OutsideBounds);
+		}
+		try {
+			while(k > 0) {
+				b[pos] = this.readByte();
+				++pos;
+				--k;
+			}
+		} catch( _g ) {
+			if(!((haxe_Exception.caught(_g).unwrap()) instanceof haxe_io_Eof)) {
+				throw _g;
+			}
+		}
+		return len - k;
+	}
+	,close: function() {
+	}
+	,readUntil: function(end) {
+		var buf = new haxe_io_BytesBuffer();
+		var last;
+		while(true) {
+			last = this.readByte();
+			if(!(last != end)) {
+				break;
+			}
+			buf.addByte(last);
+		}
+		return buf.getBytes().toString();
+	}
+	,__class__: haxe_io_Input
+};
+var _$Sys_FileInput = function(fd) {
+	this.fd = fd;
+};
+_$Sys_FileInput.__name__ = true;
+_$Sys_FileInput.__super__ = haxe_io_Input;
+_$Sys_FileInput.prototype = $extend(haxe_io_Input.prototype,{
+	fd: null
+	,readByte: function() {
+		var buf = js_node_buffer_Buffer.alloc(1);
+		try {
+			js_node_Fs.readSync(this.fd,buf,0,1,null);
+		} catch( _g ) {
+			var _g1 = haxe_Exception.caught(_g).unwrap();
+			if(_g1.code == "EOF") {
+				throw haxe_Exception.thrown(new haxe_io_Eof());
+			} else {
+				throw haxe_Exception.thrown(haxe_io_Error.Custom(_g1));
+			}
+		}
+		return buf[0];
+	}
+	,readBytes: function(s,pos,len) {
+		var data = s.b;
+		var buf = js_node_buffer_Buffer.from(data.buffer,data.byteOffset,s.length);
+		try {
+			return js_node_Fs.readSync(this.fd,buf,pos,len,null);
+		} catch( _g ) {
+			var _g1 = haxe_Exception.caught(_g).unwrap();
+			if(_g1.code == "EOF") {
+				throw haxe_Exception.thrown(new haxe_io_Eof());
+			} else {
+				throw haxe_Exception.thrown(haxe_io_Error.Custom(_g1));
+			}
+		}
+	}
+	,close: function() {
+		js_node_Fs.closeSync(this.fd);
+	}
+	,__class__: _$Sys_FileInput
+});
 var ValueType = $hxEnums["ValueType"] = { __ename__:true,__constructs__:null
 	,TNull: {_hx_name:"TNull",_hx_index:0,__enum__:"ValueType",toString:$estr}
 	,TInt: {_hx_name:"TInt",_hx_index:1,__enum__:"ValueType",toString:$estr}
@@ -2277,47 +2406,6 @@ haxe_io_BytesBuffer.prototype = {
 	}
 	,__class__: haxe_io_BytesBuffer
 };
-var haxe_io_Input = function() { };
-haxe_io_Input.__name__ = true;
-haxe_io_Input.prototype = {
-	readByte: function() {
-		throw new haxe_exceptions_NotImplementedException(null,null,{ fileName : "haxe/io/Input.hx", lineNumber : 53, className : "haxe.io.Input", methodName : "readByte"});
-	}
-	,readBytes: function(s,pos,len) {
-		var k = len;
-		var b = s.b;
-		if(pos < 0 || len < 0 || pos + len > s.length) {
-			throw haxe_Exception.thrown(haxe_io_Error.OutsideBounds);
-		}
-		try {
-			while(k > 0) {
-				b[pos] = this.readByte();
-				++pos;
-				--k;
-			}
-		} catch( _g ) {
-			if(!((haxe_Exception.caught(_g).unwrap()) instanceof haxe_io_Eof)) {
-				throw _g;
-			}
-		}
-		return len - k;
-	}
-	,close: function() {
-	}
-	,readUntil: function(end) {
-		var buf = new haxe_io_BytesBuffer();
-		var last;
-		while(true) {
-			last = this.readByte();
-			if(!(last != end)) {
-				break;
-			}
-			buf.addByte(last);
-		}
-		return buf.getBytes().toString();
-	}
-	,__class__: haxe_io_Input
-};
 var haxe_io_BytesInput = function(b,pos,len) {
 	if(pos == null) {
 		pos = 0;
@@ -2400,29 +2488,6 @@ haxe_io_FPHelper.doubleToI64 = function(v) {
 	i64.low = haxe_io_FPHelper.helper.getInt32(0,true);
 	i64.high = haxe_io_FPHelper.helper.getInt32(4,true);
 	return i64;
-};
-var haxe_io_Output = function() { };
-haxe_io_Output.__name__ = true;
-haxe_io_Output.prototype = {
-	writeByte: function(c) {
-		throw new haxe_exceptions_NotImplementedException(null,null,{ fileName : "haxe/io/Output.hx", lineNumber : 47, className : "haxe.io.Output", methodName : "writeByte"});
-	}
-	,writeBytes: function(s,pos,len) {
-		if(pos < 0 || len < 0 || pos + len > s.length) {
-			throw haxe_Exception.thrown(haxe_io_Error.OutsideBounds);
-		}
-		var b = s.b;
-		var k = len;
-		while(k > 0) {
-			this.writeByte(b[pos]);
-			++pos;
-			--k;
-		}
-		return len;
-	}
-	,close: function() {
-	}
-	,__class__: haxe_io_Output
 };
 var haxe_iterators_ArrayIterator = function(array) {
 	this.current = 0;
