@@ -1,3 +1,4 @@
+[Live Demo](https://progressive-web-dev-300511.uc.r.appspot.com)
 # A Foreward
 
 I basically made this because I'm tired of tenured .NET fanboys acting like pre-Satya Nadella Microsoft technology was worth a damn. And frankly, even still some of the stuff they put out is questionable. The most questionable thing (in my opinion) is their strange fetish for "server pages" style architecture as I like to call it... Here's (just) 3 reasons off the top of my head why server pages style tech is stupid: 
